@@ -10,15 +10,15 @@ public final class TextView
 	String nameOfPlayer2;
 	public TextView()
 	{
-		
+	
 	}
 	public void declareWinner(Model model, boolean quitAndSave) {
 		if(!quitAndSave) {
-			if(model.isPlayAgainstAI() && !model.isPlayer1()) {
-				System.out.println("AI Wins!");
-				return;
-			}
 			if(!model.isBoardFull()) {
+				if(model.isPlayAgainstAI() && !model.isPlayer1()) {
+					System.out.println("AI Wins!");
+					return;
+				}
 				if(model.isPlayer1()) {
 					System.out.println("Player 1 wins!");
 				}else {
@@ -57,7 +57,7 @@ public final class TextView
 		System.out.println("Press:");
 		System.out.println("1. Start new game");
 		System.out.println("2. Quit and Save game");
-		System.out.println("3. Forfeit game");
+		System.out.println("3. Forfeit and Quit game");
 		System.out.println("4. Continue Game");
 		int startPrompt = InputUtil.readIntFromUser();
 		while(startPrompt != 1 && startPrompt != 2 && startPrompt != 3 && startPrompt != 4) {
@@ -98,7 +98,7 @@ public final class TextView
 		return startPrompt;
 	}
 	public final int displayPlayAgainstMessage() {
-		System.out.println("============CHOOSE GAME MODE S============");
+		System.out.println("============CHOOSE GAME MODE============");
 		System.out.println("1. Human vs. Human");
 		System.out.println("2. Human vs. AI");
 		int startPrompt = InputUtil.readIntFromUser();
@@ -110,12 +110,14 @@ public final class TextView
 	public final void displayNewGameMessage()
 	{
 		System.out.println("---- NEW GAME STARTED ----");
+		System.out.println("Press 0 to pause game");
 	
 		
 	}
 
 	public final int askForMove()
 	{
+		System.out.println("Press 0 to pause game");
 		System.out.print("Select a free column: ");
 		return InputUtil.readIntFromUser();
 	}

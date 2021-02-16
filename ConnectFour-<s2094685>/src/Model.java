@@ -196,10 +196,10 @@ public final class Model
 		}
 		if(checkWin) {
 			if(maximizingPlayer){
-				moveSet[1] = (int)(Math.pow(10.0,this.getConnectN()+1))/depth;
+				moveSet[1] = (int)(Math.pow(10.0,this.getConnectN()+1));
 				return moveSet;
 			}else {
-				moveSet[1] = (int)-(Math.pow(10.0,this.getConnectN()+1))/depth;
+				moveSet[1] = (int)-(Math.pow(10.0,this.getConnectN()+1));
 				return moveSet;
 
 			}
@@ -229,7 +229,7 @@ public final class Model
 
 				}
 				return moveSet;
-			}else { //minimizing player
+			}else { //minimiizing player i.e. the player. Takes advantage of the losses of the player.
 				moveSet[1] = MAX_RANGE;
 
 				for(int i=1;i<=this.getNrCols();i++) {
@@ -286,36 +286,24 @@ public final class Model
 			int yMin = Math.max(0, k - nrCols+ 1);
 			int yMax = Math.min(nrRows - 1, k);
 			for (int i = yMin; i <= yMax; i++) {
-
 				int j = k - i;
-
 				int currentPlayer = pieceLocation[i][j];
 
 				if(currentPlayer!=0 && currentPlayer == c) {
 
 					if(currentPlayer == temp) {
 						sumAlongDiag++;
-
-
-
 					}else {
 						sumAlongDiag = 1;
-
 					}
 					temp = currentPlayer;
-
 				}
-
-
 			}
 			if(sumAlongDiag == countThreshold) {
 				count++;
-
 			}
-
 			sum += count;
 		}
-
 		return sum;
 	}
 
